@@ -1,0 +1,25 @@
+@startuml
+
+package "user" {
+  (Parcourir le profile)
+  (Parcourir l'avancement d’apprentissage)
+  (Parcourir les badges)
+}
+
+:User: --> (Parcourir le profile)
+:User: --> (Parcourir l'avancement d’apprentissage)
+:User: --> (Parcourir les badges)
+
+
+newpage
+package "admin" {
+    (Voir le progrès des apprenants)
+    (Émettre les badges manuellement)
+    (Gérer les badges)
+}
+
+:Admin: --> (Voir le progrès des apprenants)
+:Admin: --> (Émettre les badges manuellement)
+:Admin: --> (Gérer les badges)
+
+@enduml

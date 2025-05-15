@@ -1,0 +1,23 @@
+@startuml
+
+package "user" {
+  (Authentication)
+  (Voir les détails de modules / compétences)
+  (Compléter les compétences / Module)
+}
+
+:User: --> (Authentication)
+:User: --> (Voir les détails de modules / compétences)
+:User: --> (Compléter les compétences / Module)
+
+
+newpage
+package "admin" {
+    (Authentication)
+    (Gérer les modules et compétences dans chaque module)
+}
+
+:Admin: --> (Authentication)
+:Admin: --> (Gérer les modules et compétences dans chaque module)
+
+@enduml

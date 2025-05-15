@@ -1,0 +1,35 @@
+@startuml
+
+package "user" {
+  (Authentication)
+  (Voir les détails de modules / compétences)
+  (Compléter les compétences / Module)
+  (Parcourir le profile)
+  (Parcourir l'avancement d’apprentissage)
+  (Parcourir les badges)
+}
+
+:User: --> (Authentication)
+:User: --> (Voir les détails de modules / compétences)
+:User: --> (Compléter les compétences / Module)
+:User: --> (Parcourir le profile)
+:User: --> (Parcourir l'avancement d’apprentissage)
+:User: --> (Parcourir les badges)
+
+
+newpage
+package "admin" {
+    (Authentication)
+    (Gérer les modules et compétences dans chaque module)
+    (Voir le progrès des apprenants)
+    (Émettre les badges manuellement)
+    (Gérer les badges)
+}
+
+:Admin: --> (Authentication)
+:Admin: --> (Gérer les modules et compétences dans chaque module)
+:Admin: --> (Voir le progrès des apprenants)
+:Admin: --> (Émettre les badges manuellement)
+:Admin: --> (Gérer les badges)
+
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+
+class User as "User"{
+  id
+  first_name
+  last_name
+  email
+  password
+  badges
+  register()
+  login()
+  completeModule(badge)
+  earnbadge(badge)
+}
+
+class Skill as "Skill"{
+    id
+    title
+    description
+    modules
+}
+
+class Module as "Module"{
+  id
+  title
+  content
+  skillId
+  complete()
+}
+
+class Badge as "Badge"{
+  id
+  name
+  skillId
+  ImageUrl
+}
+
+class Admin as "Admin"{
+    id
+    first_name
+    last_name
+    email
+    password
+    badges
+    manageSkills()
+    manageModules()
+    issueBadges()
+    viewUserProgress()
+}
+
+
+"Skill" "1"--* "Module"
+"Skill" "1"--"1" "Badge"
+
+"Module" "1"--* "User"
+
+"Badge" "1"--* "User"
+
+@enduml
