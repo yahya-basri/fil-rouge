@@ -1,23 +1,26 @@
 @startuml
-
+left to right direction
 package "user" {
   (Authentication)
-  (Voir les détails de modules / compétences)
-  (Compléter les compétences / Module)
+  (Dashboard)
+  (Profile)
 }
 
 :User: --> (Authentication)
-:User: --> (Voir les détails de modules / compétences)
-:User: --> (Compléter les compétences / Module)
+:User: --> (Dashboard)
+:User: --> (Profile)
 
 
 newpage
+left to right direction
 package "admin" {
     (Authentication)
-    (Gérer les modules et compétences dans chaque module)
+    (Dashboard)
+    (Profile)
 }
 
 :Admin: --> (Authentication)
-:Admin: --> (Gérer les modules et compétences dans chaque module)
+:Admin: --> (Dashboard)
+:Admin: --> (Profile)
 
 @enduml

@@ -1,25 +1,18 @@
 @startuml
-
+left to right direction
 package "user" {
-  (Parcourir le profile)
-  (Parcourir l'avancement d’apprentissage)
-  (Parcourir les badges)
+  (Voir les détails de modules / compétences)
 }
 
-:User: --> (Parcourir le profile)
-:User: --> (Parcourir l'avancement d’apprentissage)
-:User: --> (Parcourir les badges)
+:User: --> (Voir les détails de modules / compétences)
 
 
 newpage
+left to right direction
 package "admin" {
-    (Voir le progrès des apprenants)
-    (Émettre les badges manuellement)
-    (Gérer les badges)
+    (Gérer les modules et compétences dans chaque module)
 }
 
-:Admin: --> (Voir le progrès des apprenants)
-:Admin: --> (Émettre les badges manuellement)
-:Admin: --> (Gérer les badges)
+:Admin: --> (Gérer les modules et compétences dans chaque module)
 
 @enduml

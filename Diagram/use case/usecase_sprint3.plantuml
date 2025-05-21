@@ -1,19 +1,11 @@
 @startuml
 left to right direction
 package "user" {
-  (Authentication)
-  (Dashboard)
-  (Profile)
-  (Voir les détails de modules / compétences)
   (Compléter les compétences / Module)
   (Parcourir l'avancement d’apprentissage)
   (Parcourir les badges)
 }
 
-:User: --> (Authentication)
-:User: --> (Dashboard)
-:User: --> (Profile)
-:User: --> (Voir les détails de modules / compétences)
 :User: --> (Compléter les compétences / Module)
 :User: --> (Parcourir l'avancement d’apprentissage)
 :User: --> (Parcourir les badges)
@@ -22,18 +14,10 @@ package "user" {
 newpage
 left to right direction
 package "admin" {
-    (Authentication)
-    (Dashboard)
-    (Profile)
-    (Gérer les modules et compétences dans chaque module)
     (Voir le progrès des apprenants)
     (Gérer les badges)
 }
 
-:Admin: --> (Authentication)
-:Admin: --> (Dashboard)
-:Admin: --> (Profile)
-:Admin: --> (Gérer les modules et compétences dans chaque module)
 :Admin: --> (Voir le progrès des apprenants)
 :Admin: --> (Gérer les badges)
 
