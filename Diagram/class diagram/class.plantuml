@@ -1,5 +1,5 @@
 @startuml
-
+left to right direction
 class User as "User"{
   id
   first_name
