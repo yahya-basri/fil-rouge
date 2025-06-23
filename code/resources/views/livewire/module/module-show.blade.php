@@ -6,6 +6,7 @@
         </flux:heading>
         <a href="{{ route('module.edit', $module->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-1">Edit Module</a>
         <a wire:click="deleteModule" wire:confirm="Are you sure you want to remove this module and all its skills?" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete Module</a>
+        <a href="{{ route('skills.create', $module->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-1">Add skill</a>
         <flux:separator variant="subtle" />
     </div>
 
@@ -14,26 +15,6 @@
         <div class="bg-blue-600 h-2.5 rounded-full" style="width: {{ $completionPercentage }}%"></div>
     </div>
     <p class="mb-4 text-sm text-gray-600 dark:text-gray-400">{{ number_format($completionPercentage, 0) }}% complete</p>
-
-    {{-- Skill Creation Form --}}
-    <div class="mb-8 p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-        <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Add New Skill</h3>
-        <form wire:submit.prevent="createSkill">
-            <div class="mb-4">
-                <label for="skillName" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Skill Name</label>
-                <input type="text" id="skillName" wire:model.live="skillName" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="e.g., Understanding Basic HTML">
-                @error('skillName') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
-            </div>
-            <div class="mb-4">
-                <label for="skillContent" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Skill Content (Optional)</label>
-                <textarea id="skillContent" wire:model.live="skillContent" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Provide a brief description or details for this skill."></textarea>
-                @error('skillContent') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
-            </div>
-            <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                Add Skill
-            </button>
-        </form>
-    </div>
 
     {{-- Skills List --}}
     <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Module Skills</h2>
