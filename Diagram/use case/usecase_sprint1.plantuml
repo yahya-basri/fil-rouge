@@ -1,26 +1,35 @@
 @startuml
 left to right direction
-package "user" {
-  (Authentication)
+package "student" {
   (Dashboard)
-  (Profile)
+  (Show the total number of modules)
 }
 
-:User: --> (Authentication)
-:User: --> (Dashboard)
-:User: --> (Profile)
-
+:student: --> (Dashboard)
+:student: --> (Show the total number of modules)
 
 newpage
 left to right direction
 package "admin" {
-    (Authentication)
-    (Dashboard)
-    (Profile)
+  (Dashboard)
+  (Show the total number of modules)
+  (Show the total number of users)
 }
 
-:Admin: --> (Authentication)
-:Admin: --> (Dashboard)
-:Admin: --> (Profile)
+:admin: --> (Dashboard)
+:admin: --> (Show the total number of modules)
+:admin: --> (Show the total number of users)
+
+newpage
+left to right direction
+package "professor" {
+  (Dashboard)
+  (Show the total number of modules)
+  (Show the total number of users)
+}
+
+:professor: --> (Dashboard)
+:professor: --> (Show the total number of modules)
+:professor: --> (Show the total number of users)
 
 @enduml

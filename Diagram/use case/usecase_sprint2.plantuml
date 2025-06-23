@@ -1,18 +1,41 @@
 @startuml
 left to right direction
-package "user" {
-  (Voir les détails de modules / compétences)
+package "student" {
+  (Browse modules and their skills)
+  (Complete skills and modules)
 }
 
-:User: --> (Voir les détails de modules / compétences)
-
+:student: --> (Browse modules and their skills)
+:student: --> (Complete skills and modules)
 
 newpage
 left to right direction
 package "admin" {
-    (Gérer les modules et compétences dans chaque module)
+  (CRUD users with roles)
+  (CRUD modules)
+  (CRUD skills)
+  (Browse modules)
+  (Browse skills inside every module)
 }
 
-:Admin: --> (Gérer les modules et compétences dans chaque module)
+:admin: --> (CRUD users with roles)
+:admin: --> (CRUD modules)
+:admin: --> (CRUD skills)
+:admin: --> (Browse modules)
+:admin: --> (Browse skills inside every module)
+
+newpage
+left to right direction
+package "professor" {
+  (CRUD modules)
+  (CRUD skills)
+  (Browse modules)
+  (Browse skills inside every module)
+}
+
+:professor: --> (CRUD modules)
+:professor: --> (CRUD skills)
+:professor: --> (Browse modules)
+:professor: --> (Browse skills inside every module)
 
 @enduml

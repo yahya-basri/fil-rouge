@@ -1,40 +1,65 @@
 @startuml
 left to right direction
-package "user" {
-  (Authentication)
+package "student" {
   (Dashboard)
-  (Profile)
-  (Voir les détails de modules / compétences)
-  (Compléter les compétences / Module)
-  (Parcourir l'avancement d’apprentissage)
-  (Parcourir les badges)
+  (Show the total number of modules)
+  (Browse modules and their skills)
+  (Complete skills and modules)
+  (Show progress bar for skill completion)
+  (Issue a badge for module completion)
 }
 
-:User: --> (Authentication)
-:User: --> (Dashboard)
-:User: --> (Profile)
-:User: --> (Voir les détails de modules / compétences)
-:User: --> (Compléter les compétences / Module)
-:User: --> (Parcourir l'avancement d’apprentissage)
-:User: --> (Parcourir les badges)
-
+:student: --> (Dashboard)
+:student: --> (Show the total number of modules)
+:student: --> (Browse modules and their skills)
+:student: --> (Complete skills and modules)
+:student: --> (Show progress bar for skill completion)
+:student: --> (Issue a badge for module completion)
 
 newpage
 left to right direction
 package "admin" {
-    (Authentication)
-    (Dashboard)
-    (Profile)
-    (Gérer les modules et compétences dans chaque module)
-    (Voir le progrès des apprenants)
-    (Gérer les badges)
+  (Dashboard)
+  (Show the total number of modules)
+  (Show the total number of users)
+  (CRUD users with roles)
+  (CRUD modules)
+  (CRUD skills)
+  (Browse modules)
+  (Browse skills inside every module)
+  (Progress bar for skill completion)
+  (Issue a badge for module completion)
 }
 
-:Admin: --> (Authentication)
-:Admin: --> (Dashboard)
-:Admin: --> (Profile)
-:Admin: --> (Gérer les modules et compétences dans chaque module)
-:Admin: --> (Voir le progrès des apprenants)
-:Admin: --> (Gérer les badges)
+:admin: --> (Dashboard)
+:admin: --> (Show the total number of modules)
+:admin: --> (Show the total number of users)
+:admin: --> (CRUD users with roles)
+:admin: --> (CRUD modules)
+:admin: --> (CRUD skills)
+:admin: --> (Browse modules)
+:admin: --> (Browse skills inside every module)
+:admin: --> (Progress bar for skill completion)
+:admin: --> (Issue a badge for module completion)
+
+newpage
+left to right direction
+package "professor" {
+  (Dashboard)
+  (Show the total number of modules)
+  (Show the total number of users)
+  (CRUD modules)
+  (CRUD skills)
+  (Browse modules)
+  (Browse skills inside every module)
+}
+
+:professor: --> (Dashboard)
+:professor: --> (Show the total number of modules)
+:professor: --> (Show the total number of users)
+:professor: --> (CRUD modules)
+:professor: --> (CRUD skills)
+:professor: --> (Browse modules)
+:professor: --> (Browse skills inside every module)
 
 @enduml

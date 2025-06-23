@@ -1,24 +1,20 @@
 @startuml
 left to right direction
-package "user" {
-  (Compléter les compétences / Module)
-  (Parcourir l'avancement d’apprentissage)
-  (Parcourir les badges)
+package "student" {
+  (Show progress bar for skill completion)
+  (Issue a badge for module completion)
 }
 
-:User: --> (Compléter les compétences / Module)
-:User: --> (Parcourir l'avancement d’apprentissage)
-:User: --> (Parcourir les badges)
-
+:student: --> (Show progress bar for skill completion)
+:student: --> (Issue a badge for module completion)
 
 newpage
 left to right direction
 package "admin" {
-    (Voir le progrès des apprenants)
-    (Gérer les badges)
+  (Progress bar for skill completion)
+  (Issue a badge for module completion)
 }
 
-:Admin: --> (Voir le progrès des apprenants)
-:Admin: --> (Gérer les badges)
-
+:admin: --> (Progress bar for skill completion)
+:admin: --> (Issue a badge for module completion)
 @enduml
