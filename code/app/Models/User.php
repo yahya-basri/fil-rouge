@@ -25,16 +25,51 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+    // RELATIONSHIP
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class)
+                    ->withPivot('completed_at')   // expose the field
+                    ->withTimestamps();           // still keeps created_at / updated_at
+    }
+
+    public function completedSkills()
+    {
+        return $this->belongsToMany(Skill::class, 'user_completed_skills', 'user_id', 'skill_id')->withTimestamps();
+    }
+
+    public function badges()
+    {
+        return $this->belongsToMany(Badge::class, 'user_badges', 'user_id', 'badge_id')->withTimestamps();
+    }
+
+    public function completedModules()
+    {
+        return $this->belongsToMany(
+            \App\Models\Module::class,
+            'module_user',       // <— pivot table name
+            'user_id',
+            'module_id'
+        )
+        ->withPivot('completed_at')
+        ->withTimestamps();
+    }
+
+    // Assuming you have a method to check if the user is a student
+    public function isStudent()
+    {
+        return $this->role === 'student';
+    }
 
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var list<string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
 
     /**
      * Get the attributes that should be cast.

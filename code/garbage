@@ -1,0 +1,65 @@
+// MOdule show
+public function completeSkill(int $skillId)
+    {
+        // avoid double-attach
+        $pivot = Auth::user()
+            ->completedSkills()
+            ->wherePivot('skill_id', $skillId)
+            ->first();
+
+        if (! $pivot) {
+            Auth::user()
+                ->completedSkills()
+                ->attach($skillId, ['completed_at' => now()]);
+        }
+
+        // if all skills done, mark module
+        $this->recalculateProgress();
+        if ($this->isCompleted && ! Auth::user()->completedModules()
+                ->where('module_id', $this->moduleId)
+                ->exists()) {
+            Auth::user()
+                ->completedModules()
+                ->attach($this->moduleId, ['completed_at' => now()]);
+        }
+        // BADGE LOGIC
+        if ($this->isCompleted && 
+            ! Auth::user()->completedModules()->where('module_id', $this->moduleId)->exists()
+        ) {
+        // mark module completed
+        Auth::user()
+            ->completedModules()
+            ->attach($this->moduleId, ['completed_at' => now()]);
+
+        // ISSUE BADGE
+        $badge = $this->module->badge;
+        if ($badge) {
+            Auth::user()
+                ->badges()
+                ->attach($badge->id, ['issued_at' => now()]);
+            session()->flash('badge_awarded', "You’ve earned the “{$badge->name}” badge!");
+        }
+    }
+    }
+
+    protected function refreshSkills(): void
+    {
+        $this->skills = $this->module->skills()->get();
+        $this->recalculateProgress();
+    }
+
+    protected function recalculateProgress(): void
+    {
+        $total = $this->module->skills()->count();
+        $done  = Auth::user()
+            ->completedSkills()
+            ->where('skills.module_id', $this->moduleId)
+            ->count();
+
+        $this->progress    = $total > 0 ? ($done / $total) * 100 : 0;
+        $this->isCompleted = ($done === $total && $total > 0);
+    }
+
+
+
+/////////

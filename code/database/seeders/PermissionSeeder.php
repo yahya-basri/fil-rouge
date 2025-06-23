@@ -14,8 +14,7 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         $permissions = [
-            "users.page",
-            "roles.page",
+            "module.create",
         ];
         
         foreach($permissions as $key => $value){

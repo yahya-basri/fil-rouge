@@ -1,0 +1,66 @@
+@startuml
+left to right direction
+
+class User{
+    id
+    name
+    email
+    password
+    UserShow()
+    UserIndex()
+    UserCreate()
+    UserEdit()
+}
+
+class Module{
+    id
+    name
+    ModuleShow()
+    ModuleIndex()
+    ModuleCreate()
+    ModuleEdit()
+}
+
+class Skill{
+    id
+    name
+    content
+    module_id
+    SkillShow()
+    SkillIndex()
+    SkillCreate()
+    SkillEdit()
+}
+
+class Role{
+    id
+    name
+    RoleShow()
+    RoleIndex()
+    RoleCreate()
+    RoleEdit()
+}
+
+class Permissions{
+    id
+    name
+}
+
+class role_has_permissions{
+    permission_id
+    role_id
+}
+
+class Badge{
+    id
+    name
+    module_id
+}
+
+"Role" *--"1" "User" 
+"User" *--"1" "Role" 
+"Module" "1"--* "Skill" 
+"Module" "1"--"1" "Badge" 
+"Role" "1"--* "role_has_permissions" 
+"Permissions" *--* "role_has_permissions"
+@enduml

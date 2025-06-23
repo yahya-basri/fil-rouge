@@ -7,7 +7,7 @@ use App\Models\Module;
 
 class ModuleEdit extends Component
 {
-    public $module , $name;
+    public $module, $skill , $name;
 
     public function render()
     {
@@ -27,6 +27,6 @@ class ModuleEdit extends Component
         $this->module->name = $this->name;
         $this->module->save();
 
-        return to_route("module.index")->with("success");
+        return to_route("module.show", $this->module->id)->with("success");
     }
 }
